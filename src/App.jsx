@@ -1,11 +1,14 @@
 import { useState } from "react";
 
 import "./App.css";
+import CalculadoraComponent from "./assets/Components/CalculadoraComponent";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <></>;
+  return (
+    <>
+      <CalculadoraComponent />
+    </>
+  );
 }
 
 export default App;
