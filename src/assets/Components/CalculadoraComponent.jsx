@@ -32,6 +32,7 @@ const CalculadoraComponent = () => {
           {/* No is the ideal way of doing */}
           <button onClick={() => multiplicar(2)}>X2</button>
           <button onClick={() => multiplicar(3)}>X3</button>
+          <button onClick={() => setMultiplicador(0)}>Reset</button>
         </div>
       </div>
     </div>
