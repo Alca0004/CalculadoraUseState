@@ -1,41 +1,48 @@
 import React, { useState } from "react";
 
 const CalculadoraComponent = () => {
-  const [multiplicador, setMultiplicador] = useState(0);
+  const [num1, setnum1] = useState("");
+  const [num2, setnum2] = useState("");
+  const [resultado, setResultado] = useState(null);
 
-  // Logic:
-  // Define a function called multiplicar.
-  // The function receives a parameter valorPorMultiplicar.
-  // Calculate a new value by multiplying the current state multiplicador by valorPorMultiplicar.
-  // Check the result of the multiplication.
-  // If the result is 0, reset the state to 1.
-  // Otherwise, update the state with the calculated result.
-
-  const multiplicar = (valorPorMultiplicar) => {
-    const nuevoValor = multiplicador * valorPorMultiplicar;
-
-    if (nuevoValor === 0) {
-      setMultiplicador(1);
-    } else {
-      setMultiplicador(nuevoValor);
+  const operation = (operationType) => {
+    switch (operationType) {
+      case "SUMAR":
+        setResultado(num1 + num2);
+        break;
+      case "RESTAR":
+        setResultado(num1 - num2);
+        break;
     }
   };
 
   return (
     <div>
+      <h1>Calculadora</h1>
       <div>
-        <h1>Calculadora</h1>
+        <h2>Valores</h2>
         <div>
-          <span>El resultado del multiplicador es {multiplicador}</span>
+          <span>Numero: 1</span>
+          <input type="number" onChange={(e) => setnum1(Number.parseInt(e.target.value))} />
         </div>
         <div>
-          {/* No is the ideal way of doing */}
-          <button onClick={() => multiplicar(2)}>X2</button>
-          <button onClick={() => multiplicar(3)}>X3</button>
-          <button onClick={() => setMultiplicador(0)}>Reset</button>
+          <span>Numero: 2</span>
+          <input type="number" onChange={(e) => setnum2(Number.parseInt(e.target.value))} />
         </div>
+        <button onClick={() => operation("SUMAR")}>Sumar</button>
+        <button onClick={() => operation("RESTAR")}>Restar</button>
       </div>
+      {resultado ? (
+        <div>
+          <h3>Resultado: {resultado}</h3>
+        </div>
+      ) : (
+        <div>
+          <h3> Aun no hay ningun resultado</h3>
+        </div>
+      )}
     </div>
   );
 };
+
 export default CalculadoraComponent;
